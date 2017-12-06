@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import os
-import sys
 import requests
 import json
 import subprocess
@@ -21,14 +20,13 @@ def getdkp():
         request_data = request.get_data()
         # if you want to use GET put stuff here
         return "this is a GET request"
-    
+
     if request.method == 'POST':
         request_data = request.args.get('text')
         request_json = request.get_json(force=True)
         player_name = str(request_json["text"])
-        os.system("/bin/echo " + "data = " + str(request_data))
-        os.system("/bin/echo " + "json = " + str(request_json))
-        playerproc = subprocess.Popen(["sh","./report-dkp.sh", player_name],
+        # eqdkp2 scraper script, player_name is the value passed in chat
+        playerproc = subprocess.Popen(["sh",".report-dkp-webhook.sh", player_name],
                                       stdout=subprocess.PIPE)
         playerout = playerproc.stdout.read()
         response = app.response_class(response=str(playerout), status=200,
