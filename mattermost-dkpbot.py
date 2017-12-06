@@ -40,7 +40,6 @@ def root():
     """
     Home handler
     """
-
     return "OK"
 
 # Python wsgi server options
