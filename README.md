@@ -2,7 +2,7 @@
 
 This is a simple, lightweight Flask server used to query the [EQDKP-Plus](https://eqdkp-plus.eu/en/) CMS system and display player DKP (dragon kill points) in a public [Mattermost](https://about.mattermost.com/) channel.
 
-This can probably be repurposed to do other things, in this case it just wraps a scrape shell script into a JSON-friendly API for Mattermost but could be modified to perform other tasks.  I wanted to originally use the custom ```slash commands``` but had trouble with how Mattermost sent requests so this turned into a webhook instead.
+This can probably be repurposed to do other things, in this case it just wraps a scrape shell script into a JSON-friendly API for Mattermost but could be modified to perform other tasks.  I wanted to originally use the custom ```slash commands``` but had trouble with how Mattermost receives/parses JSON requests so this turned into a webhook instead.  Future improvement should probably include using the [EQKDP-Plus API](https://eqdkp-plus.eu/wiki/Plus_Exchange).
 
 ### Components
 
