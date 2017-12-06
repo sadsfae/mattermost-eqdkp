@@ -13,7 +13,7 @@ if [[ $# -eq 0 ]]; then
 fi
 
 function gather_dkp_value {
-        obtain_dkp=$(curl --silent $dkp_url | egrep -A1 $player_name \
+        obtain_dkp=$(curl --silent $dkp_url | egrep -A1 -i $player_name \
         | sed 's/<[^>]*>//g' | egrep -v "Main|--" | awk 'NR==3')
         dkp_value=$(echo $obtain_dkp | tr -d '[:blank:]')
         echo "$player_name currently has $dkp_value points"
