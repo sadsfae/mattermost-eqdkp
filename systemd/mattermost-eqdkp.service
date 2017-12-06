@@ -1,0 +1,17 @@
+[Unit]
+Description = MatterMost DKP Webhook Service for EQDKP-Plus Point Queries
+Documentation = https://github.com/sadsfae/mattermost-eqdkp
+
+[Service]
+Type = simple
+ExecStart = /home/youruser/mattermost-eqdkp/mattermost-eqdkp.py
+ExecStop = /usr/bin/pkill mattermost-eqdkp.py
+Restart = always
+StartLimitInterval = 60
+StartLimitBurst = 10
+User=youruser
+WorkingDirectory=/home/youruser/mattermost-eqdkp
+
+[Install]
+WantedBy = multi-user.target
+

@@ -33,7 +33,7 @@ cd mattermost-eqdkp
 - Edit your ```botname``` variable in ```report-dkp-webhook.sh``` 
 * Run the Python application via ```python mattermost-dkpbot.py```
    - You might want to run this via a systemd service or init script once you're happy with it.
-   - You should run this as an unprivileged user.
+   - You should run this as an unprivileged user, I've included an example ```systemd``` unit file you can use.
 
 ### Mattermost Server Settings
 
