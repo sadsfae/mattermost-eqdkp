@@ -6,14 +6,6 @@ player_name=$(echo $args | awk '{ print $2 }')
 dkp_url="https://example.com/eqdkp/index.php/Points/"
 botname="dkpbot"
 
-# minimal sanitization of input
-# print usage if not specified
-if [[ $# -eq 0 ]]; then
-        echo "USAGE: report-dkp.sh PLAYERNAME (case sensitive) "
-        echo "                                                 "
-        exit 1
-fi
-
 function gather_dkp_value {
         obtain_dkp=$(curl --silent $dkp_url | egrep -A1 $player_name \
         | sed 's/<[^>]*>//g' | egrep -v "Main|--" | awk 'NR==3')
