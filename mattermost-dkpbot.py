@@ -11,7 +11,7 @@ from flask import jsonify
 
 app = Flask(__name__)
 
-# ensure unicode is used
+# sanitize input for unicode
 _u = lambda t: t.decode('UTF-8', 'replace') if isinstance(t, str) else t
 
 @app.route('/getdkp', methods = ['GET', 'POST'])
