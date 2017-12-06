@@ -16,9 +16,9 @@ This can probably be repurposed to do other things, in this case it just wraps a
    - usage: ```sh report-dkp.sh playername```
 
 ### Requirements
-* Python
+* python (tested on 2.7.5)
 * python-flask
-* Mattermost 4.3.2+
+* Mattermost (tested on 4.3.2+)
 
 ### Installation
 
@@ -32,6 +32,7 @@ cd mattermost-eqdkp
 - Edit your ```botname``` variable in ```report-dkp-webhook.sh``` 
 * Run the Python application via ```python mattermost-dkpbot.py```
    - You might want to run this via a systemd service or init script once you're happy with it.
+   - You should run this as an unprivileged user.
 
 ### Mattermost Server Settings
 
