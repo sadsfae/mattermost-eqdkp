@@ -10,10 +10,7 @@ This can probably be repurposed to do other things, in this case it just wraps a
   Mattermost custom slash command.
 
 * ```report-dkp-slashcommand.sh``` Shell script that queries EQDKP2 (tested on 2.2)
-  which pulls in character name and matching DKP points.
-
-* ```report-dkp.sh``` Standalong script to query and return EQKDP2 values
-   - usage: ```sh report-dkp.sh playername```
+  - This can also be run stand-alone via ```sh report-dkp-slashcommand.sh playername```
 
 ### Requirements
 * python (tested on 2.7.5)
