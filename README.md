@@ -1,15 +1,15 @@
-## Flask-based API for a Mattermost EQDKP2 Webhook
+## Flask-based API for a Mattermost EQDKP2 Slash Command
 
-This is a simple, lightweight Flask server used to query the [EQDKP-Plus](https://eqdkp-plus.eu/en/) CMS system and display player DKP (dragon kill points) in a public [Mattermost](https://about.mattermost.com/) channel.
+This is a simple, lightweight Flask server used to query the [EQDKP-Plus](https://eqdkp-plus.eu/en/) CMS system and display player DKP (dragon kill points) in a  [Mattermost](https://about.mattermost.com/) channel.
 
-This can probably be repurposed to do other things, in this case it just wraps a scrape shell script into a JSON-friendly API for Mattermost but could be modified to perform other tasks.  I wanted to originally use the custom ```slash commands``` but had trouble with how Mattermost receives/parses JSON requests so this turned into a webhook instead.  Future improvement should probably include using the [EQKDP-Plus API](https://eqdkp-plus.eu/wiki/Plus_Exchange).
+This can probably be repurposed to do other things, in this case it just wraps a scrape shell script into a JSON-friendly API for Mattermost.  Future improvement should probably include using the [EQKDP-Plus API](https://eqdkp-plus.eu/wiki/Plus_Exchange).
 
 ### Components
 
 * ```mattermost-dkpbot.py``` Flask app that runs an simple API to query with a
-  Mattermost outgoing webhook.
+  Mattermost custom slash command.
 
-* ```report-dkp-webhook.sh``` Shell script that queries EQDKP2 (tested on 2.2)
+* ```report-dkp-slashcommand.sh``` Shell script that queries EQDKP2 (tested on 2.2)
   which pulls in character name and matching DKP points.
 
 * ```report-dkp.sh``` Standalong script to query and return EQKDP2 values
@@ -41,13 +41,14 @@ cd mattermost-eqdkp
 * System Console -> Custom Integrations -> Enable integrations to override usernames: ```true```
 * System Console -> Enable integrations to override profile picture icons: ```true```
 
-### Webhook Settings
+### Slash Command Settings
 
-* Main Menu -> Integrations -> Outgoing Webhook
-  - Add Outgoing Webhook
-  - Content-type: ```application/json```
-  - Trigger When: ```First word matches a trigger word exactly```
-  - Callback URLs:  ```http://localhost:8098/getdkp```
+* Main Menu -> Integrations -> Slash Command 
+  - Add Slash Command
+  - Description: /getdkp playername
+  - Command Trigger Word: getdkp
+  - Request URL: http://localhost:8098/getdkp
+  - Request Method: POST
 
 ### Action Pic
 

@@ -11,6 +11,9 @@ from flask import jsonify
 
 app = Flask(__name__)
 
+# set this to either ephmeral or in_channel
+response_setting = "ephemeral"
+
 # sanitize input for unicode
 _u = lambda t: t.decode('UTF-8', 'replace') if isinstance(t, str) else t
 
@@ -22,16 +25,14 @@ def getdkp():
         return "this is a GET request"
 
     if request.method == 'POST':
-        request_data = request.args.get('text')
-        request_json = request.get_json(force=True)
-        player_name = str(request_json["text"])
-        # eqdkp2 scraper script, player_name is the value passed in chat
-        playerproc = subprocess.Popen(["sh",".report-dkp-webhook.sh", player_name],
+        tokens = request.values.get('text').strip().split()
+        dkp_name = tokens[0]
+        # shell tool that scrapes EQDKP-Plus points page
+        playerproc = subprocess.Popen(["sh","./report-dkp-slashcommand.sh", dkp_name],
                                       stdout=subprocess.PIPE)
-        playerout = playerproc.stdout.read()
-        response = app.response_class(response=str(playerout), status=200,
-                                      mimetype="application/json")
-        return response
+        playerout = playerproc.stdout.read().strip()
+        response_dict = { "response_type": response_setting, "text": playerout }
+        return Response(json.dumps(response_dict), mimetype="application/json")
     else:
         return "405 Method Not Allowed"
 
