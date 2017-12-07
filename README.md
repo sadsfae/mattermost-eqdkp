@@ -16,7 +16,7 @@ This can probably be repurposed to do other things, in this case it just wraps a
 * python (tested on 2.7.5)
 * python-flask
 * Mattermost (tested on 4.3.2+) 
-- EQDKP-Plus 2.2 (tested on 2.2.15)
+* EQDKP-Plus 2.2 (tested on 2.2.15)
 
 ### Installation
 
