@@ -10,12 +10,12 @@ This can probably be repurposed to do other things, in this case it just wraps a
   Mattermost custom slash command.
 
 * ```report-dkp-slashcommand.sh``` Shell script that queries EQDKP2 (tested on 2.2)
-  - This can also be run stand-alone via ```sh report-dkp-slashcommand.sh playername```
+   - This can also be run stand-alone via ```sh report-dkp-slashcommand.sh playername```
 
 ### Requirements
 * python (tested on 2.7.5)
 * python-flask
-* Mattermost (tested on 4.3.2+)
+* Mattermost (tested on 4.3.2+) 
 - EQDKP-Plus 2.2 (tested on 2.2.15)
 
 ### Installation
